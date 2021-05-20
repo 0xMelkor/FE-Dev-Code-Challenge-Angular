@@ -1,2 +1,2 @@
-export * from './person.model';
-export * from './message.model';
+export * from './person';
+export * from './message';
