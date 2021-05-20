@@ -1,8 +1,13 @@
-import { Observable } from "rxjs";
-import { ChatBubble } from "./chat-bubble.model";
-import { ChatMember } from "./chat-member.model";
+import { Observable } from 'rxjs';
+import { ChatBubble } from './chat-bubble.model';
+import { ChatMember } from './chat-member.model';
 
 export abstract class ChatRoom {
+
+    /**
+     * Applies bootstrap logic for the chatroom
+     */
+    abstract connect(): Promise<void>;
 
     /**
      * Posts a message to the chatroom on behalf of the connected user.
@@ -25,7 +30,7 @@ export abstract class ChatRoom {
     abstract messages(): Observable<ChatBubble[]>;
 
     /**
-     * Applies a filter to the stream of messages to show only messages from selected "people"
+     * Applies a filter to the stream of messages to show only messages from selected 'people'
      * @param users The list of users to be filtered
      */
     abstract filter(people: ChatMember[]);

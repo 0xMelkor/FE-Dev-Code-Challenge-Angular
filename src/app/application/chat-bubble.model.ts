@@ -1,20 +1,40 @@
-import { Message, Person } from "../domain";
+import { Message } from '../domain';
 
 export class ChatBubble {
 
-    authorId: string;
-    authorDisplayName: string;
-    publishingDate: Date;
-    text: string;
-    fromLoggedUser: boolean;
+    private authorId: string;
+    private authorDisplayName: string;
+    private publishingDate: Date;
+    private text: string;
+    private fromLoggedUser: boolean;
 
-    static from(msg: Message, author: Person, loggedUsrId: string): ChatBubble {
+    getAuthorId(): string {
+        return this.authorId;
+    }
+
+    getAuthorDisplayName(): string {
+        return this.authorDisplayName;
+    }
+
+    getPublishingDate(): Date {
+        return this.publishingDate;
+    }
+
+    getText(): string {
+        return this.text;
+    }
+
+    isFromLoggedUser(): boolean {
+        return this.fromLoggedUser;
+    }
+
+    static from(msg: Message, loggedUsrId: string): ChatBubble {
         return Object.assign(new ChatBubble(), {
-            authorId: msg.authorId,
-            authorDisplayName: `${author.name} ${author.surname}`,
-            publishingDate: new Date(Date.parse(msg.publishingDate)),
-            text: msg.text,
-            fromLoggedUser: loggedUsrId === author.id
+            authorId: msg.authorId(),
+            authorDisplayName: `${msg.authorName()} ${msg.authorSurname()}`,
+            publishingDate: msg.getPublishingDate(),
+            text: msg.getText(),
+            fromLoggedUser: loggedUsrId === msg.authorId()
         });
     }
 }

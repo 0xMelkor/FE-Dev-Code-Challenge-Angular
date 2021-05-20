@@ -19,17 +19,17 @@ export class MessageRepositoryService extends MessageRepository {
         return new Promise(accept => accept());
     }
 
-    findAllSortByDateDesc(): Promise<Message[]> {
+    findAll(): Promise<Message[]> {
     
-        const msgs: Message[] = this.messages
+        /*const msgs: Message[] = this.messages
             .concat(this.storedMessages())
             .sort((m1: Message, m2: Message) => {
                 const d1Time: number = Date.parse(m1.publishingDate);
                 const d2Time: number = Date.parse(m2.publishingDate);
                 return d1Time - d2Time
-            });
+            });*/
         
-        return new Promise(accept => accept(msgs))
+        return new Promise(accept => accept([]))
     }
 
 

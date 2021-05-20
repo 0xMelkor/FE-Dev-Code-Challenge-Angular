@@ -1,16 +1,28 @@
-import { Person } from "../domain";
+import { Person } from '../domain';
 
 export class ChatMember {
 
-    id: string;
-    displayName: string;
-    thumbUrl: string;
+    private id: string;
+    private displayName: string;
+    private thumbUrl: string;
+
+    getId(): string {
+        return this.id;
+    }
+
+    getDisplayName(): string {
+        return this.displayName;
+    }
+
+    getThumbUrl(): string {
+        return this.thumbUrl;
+    }
 
     static from(p: Person): ChatMember {
         return Object.assign(new ChatMember, {
-            id: p.id,
-            displayName: `${p.name} ${p.surname}`,
-            thumbUrl: p.thumbUrl
+            id: p.getId(),
+            displayName: `${p.getName()} ${p.getSurname()}`,
+            thumbUrl: p.getThumbUrl()
         });
     }
 }
