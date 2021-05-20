@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Message, Person } from '../../domain';
+import { Note, Person } from '../../domain';
 import { MessageRepository } from '../message.repository';
-import { PersonRepositoryService } from './person.repository.service';
-import { MOCK_PERSONS, MOCK_MESSAGES } from './mock-data';
+import { MOCK_MESSAGES, MOCK_PERSONS } from './mock-data';
 
-interface MessageEntity {
+interface NoteEntity {
     authorId: string;
     publishingDateIso: string;
     text: string;
@@ -14,27 +13,27 @@ interface MessageEntity {
 export class MessageRepositoryService extends MessageRepository {
 
     private DB_KEY = 'messages';
-    private readonly messages: Message[] = [];
+    private readonly messages: Note[] = [];
 
     constructor() {
         super();
     }
 
     /**@override */
-    save(message: Message): Promise<void> {
-        const allMsgs: Message[] = this.retrieveAllMsgs();
-        allMsgs.push(message);
-        this.persist(allMsgs);
+    save(message: Note): Promise<void> {
+        const allNotes: Note[] = this.retrieveAllNotes();
+        allNotes.push(message);
+        this.persist(allNotes);
         return new Promise(accept => accept());
     }
 
-    private persist(msgs: Message[]) {
-        const json = JSON.stringify(this.toStorageEntites(msgs || []));
+    private persist(notes: Note[]) {
+        const json = JSON.stringify(this.toStorageEntites(notes || []));
         window.localStorage.setItem(this.DB_KEY, json);
     }
 
-    private toStorageEntites(msgs: Message[]): MessageEntity[] {
-        return msgs.map((m: Message) => ({
+    private toStorageEntites(msgs: Note[]): NoteEntity[] {
+        return msgs.map((m: Note) => ({
             authorId: m.authorId(),
             publishingDateIso: m.getPublishingDate().toISOString(),
             text: m.getText()
@@ -42,23 +41,23 @@ export class MessageRepositoryService extends MessageRepository {
     }
 
     /**@override */
-    findAll(): Promise<Message[]> {
-        return new Promise(accept => accept(this.retrieveAllMsgs()))
+    findAll(): Promise<Note[]> {
+        return new Promise(accept => accept(this.retrieveAllNotes()))
     }
 
-    private retrieveAllMsgs(): Message[] {
-        return this.retrieveStoredMsgs().concat(MOCK_MESSAGES);
+    private retrieveAllNotes(): Note[] {
+        return this.retrieveStoredNotes().concat(MOCK_MESSAGES);
     }
 
-    private retrieveStoredMsgs(): Message[] {
+    private retrieveStoredNotes(): Note[] {
         const json: string = window.localStorage.getItem(this.DB_KEY);
-        const rawMessages: MessageEntity[] = JSON.parse(json) as MessageEntity[];
+        const rawMessages: NoteEntity[] = JSON.parse(json) as NoteEntity[];
         const persons: Person[] = MOCK_PERSONS;
 
-        return rawMessages.map((rawm: MessageEntity) => {
+        return rawMessages.map((rawm: NoteEntity) => {
             const author: Person = persons.filter(p => p.getId() === rawm.authorId)[0];
             const publishingDate: Date = new Date(Date.parse(rawm.publishingDateIso));
-            return new Message(author, publishingDate, rawm.text);
+            return new Note(author, publishingDate, rawm.text);
         });
     }
 

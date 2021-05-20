@@ -4,11 +4,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChatRoom, ChatRoomService } from './application';
 import { LoggedUserRepository, LoggedUserRepositoryService, MessageRepository, MessageRepositoryService, PersonRepository, PersonRepositoryService } from './infrastructure';
-
+import { AdvancedNotesComponent } from './presentation/advanced-notes/advanced-notes.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AdvancedNotesComponent
   ],
   imports: [
     BrowserModule,
@@ -17,19 +18,19 @@ import { LoggedUserRepository, LoggedUserRepositoryService, MessageRepository, M
   providers: [
     {
       provide: ChatRoom,
-      useClass: ChatRoomService 
+      useClass: ChatRoomService
     },
     {
       provide: PersonRepository,
-      useClass: PersonRepositoryService 
+      useClass: PersonRepositoryService
     },
     {
       provide: MessageRepository,
-      useClass: MessageRepositoryService 
+      useClass: MessageRepositoryService
     },
     {
       provide: LoggedUserRepository,
-      useClass: LoggedUserRepositoryService 
+      useClass: LoggedUserRepositoryService
     },
   ],
   bootstrap: [AppComponent]

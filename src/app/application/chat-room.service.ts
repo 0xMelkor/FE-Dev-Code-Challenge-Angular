@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, take } from 'rxjs/internal/operators';
-import { Message, Person } from '../domain';
+import { Note, Person } from '../domain';
 import { LoggedUserRepository, MessageRepository, PersonRepository } from '../infrastructure';
 import { ChatBubble } from './chat-bubble.model';
 import { ChatMember } from './chat-member.model';
@@ -25,8 +25,8 @@ export class ChatRoomService extends ChatRoom {
     /** @override */
     async connect(): Promise<void> {
         this.user = await this.userRepo.loggedUser();
-        const messages: Message[] = await this.messageRepo.findAll();
-        const chatBubbles = messages.map((m: Message) => this.toBubble(m));
+        const messages: Note[] = await this.messageRepo.findAll();
+        const chatBubbles = messages.map((m: Note) => this.toBubble(m));
         this.messages$ = new BehaviorSubject(chatBubbles);
     }
 
@@ -50,12 +50,12 @@ export class ChatRoomService extends ChatRoom {
     async postMessage(text: string): Promise<void> {
         const publishingDate = new Date();
         const author: Person = this.user;
-        const msg = new Message(author, publishingDate, text);
-        await this.messageRepo.save(msg);
-        this.postBubblesUpdate(msg);
+        const note = new Note(author, publishingDate, text);
+        await this.messageRepo.save(note);
+        this.postBubblesUpdate(note);
     }
 
-    private async postBubblesUpdate(msg: Message) {
+    private async postBubblesUpdate(msg: Note) {
         const bubbles: ChatBubble[] = await this.allBubbles();
         bubbles.push(this.toBubble(msg));
         this.messages$.next(bubbles);
@@ -84,7 +84,7 @@ export class ChatRoomService extends ChatRoom {
         return this.messages$.pipe(take(1)).toPromise();
     }
 
-    private toBubble(m: Message): ChatBubble {
+    private toBubble(m: Note): ChatBubble {
         return ChatBubble.from(m, this.user.getId());
     }
 }

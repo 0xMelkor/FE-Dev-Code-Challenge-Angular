@@ -1,4 +1,4 @@
-import { Message } from '../domain';
+import { Note } from '../domain';
 
 export class ChatBubble {
 
@@ -28,13 +28,13 @@ export class ChatBubble {
         return this.fromLoggedUser;
     }
 
-    static from(msg: Message, loggedUsrId: string): ChatBubble {
+    static from(note: Note, loggedUserId: string): ChatBubble {
         return Object.assign(new ChatBubble(), {
-            authorId: msg.authorId(),
-            authorDisplayName: `${msg.authorName()} ${msg.authorSurname()}`,
-            publishingDate: msg.getPublishingDate(),
-            text: msg.getText(),
-            fromLoggedUser: loggedUsrId === msg.authorId()
+            authorId: note.authorId(),
+            authorDisplayName: `${note.authorName()} ${note.authorSurname()}`,
+            publishingDate: note.getPublishingDate(),
+            text: note.getText(),
+            fromLoggedUser: loggedUserId === note.authorId()
         });
     }
 }

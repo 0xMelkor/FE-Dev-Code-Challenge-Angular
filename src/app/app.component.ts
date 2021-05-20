@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  title = 'fe-dev-code-challenge';
+  title = 'advanced-notes';
 }

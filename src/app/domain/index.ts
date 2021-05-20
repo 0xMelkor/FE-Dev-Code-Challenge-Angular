@@ -1,2 +1,2 @@
 export * from './person';
-export * from './message';
+export * from './note';

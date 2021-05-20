@@ -1,6 +1,6 @@
 import { Person } from './person';
 
-export class Message {
+export class Note {
 
     constructor(
         private author: Person,

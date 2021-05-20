@@ -25,7 +25,7 @@ export abstract class ChatRoom {
     /**
      * A stream of messages posted to the chatroom by all its members. A new message list is posted when
      * filter is applied.
-     * @returns An observable stream of Message entities
+     * @returns An observable stream of ChatBubble entities
      */
     abstract messages(): Observable<ChatBubble[]>;
 

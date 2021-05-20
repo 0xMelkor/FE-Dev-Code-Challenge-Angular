@@ -1,6 +1,6 @@
-import { Message } from '../domain';
+import { Note } from '../domain';
 
 export abstract class MessageRepository {
-    abstract save(message: Message): Promise<void>;
-    abstract findAll(): Promise<Message[]>;
+    abstract save(message: Note): Promise<void>;
+    abstract findAll(): Promise<Note[]>;
 }
