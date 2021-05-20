@@ -11,14 +11,12 @@ export class LoggedUserRepositoryService extends LoggedUserRepository {
 
     loggedUser(): Promise<Person> {
         return new Promise(accept => {
-            accept(
-                {
-                    id: '2',
-                    name: 'Bart',
-                    surname: 'Simpson',
-                    thumbUrl: '/assets/thumbs/2.jpg',
-                }
-            );
+            const id = '2';
+            const name = 'Bart';
+            const surname = 'Simpson';
+            const thumbUrl = '/assets/thumbs/2.jpg';
+            const p = new Person(id, name, surname, thumbUrl);
+            accept(p);
         })
     }
 

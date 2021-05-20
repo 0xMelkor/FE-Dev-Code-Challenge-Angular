@@ -52,6 +52,10 @@ export class ChatRoomService extends ChatRoom {
         const author: Person = this.user;
         const msg = new Message(author, publishingDate, text);
         await this.messageRepo.save(msg);
+        this.postBubblesUpdate(msg);
+    }
+
+    private async postBubblesUpdate(msg: Message) {
         const bubbles: ChatBubble[] = await this.allBubbles();
         bubbles.push(this.toBubble(msg));
         this.messages$.next(bubbles);
