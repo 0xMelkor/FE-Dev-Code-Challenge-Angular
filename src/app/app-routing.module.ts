@@ -1,14 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AdvancedNotesComponent } from './presentation/advanced-notes/advanced-notes.component';
 
 const routes: Routes = [
   {
-    path: '', component: null
+    path: 'advanced-notes',
+    component: AdvancedNotesComponent
+  },
+  {
+    path: '**',
+    redirectTo: 'advanced-notes',
+    pathMatch: 'full'
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
