@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AdvancedNotesComponent } from './presentation/advanced-notes/advanced-notes.component';
+import { AdvancedNotesComponent } from './presentation/advanced-notes.component';
 
 const routes: Routes = [
   {

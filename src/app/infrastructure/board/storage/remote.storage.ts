@@ -7,7 +7,7 @@ export class RemoteStorage {
     constructor(private http: HttpClient) { }
 
     find(): Promise<BoardEntity> {
-        return this.http.get('/assets/board.json')
+        return this.http.get('/assets/json/board.json')
             .pipe(map(json => json as BoardEntity))
             .toPromise()
     }

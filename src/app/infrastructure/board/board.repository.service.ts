@@ -34,7 +34,8 @@ export class BoardRepositoryService extends BoardRepository {
                 const localNotes: NoteEntity[] = this.localStorage.findAll();
                 return new BoardFactory(board, localNotes).build();
             })
-            .catch(() => {
+            .catch(e => {
+                console.error(e);
                 throw new Error('Unable to instantiate board!')
             });
     }

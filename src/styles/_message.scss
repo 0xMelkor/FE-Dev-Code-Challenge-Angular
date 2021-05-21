@@ -1,0 +1,64 @@
+.msg {
+    display: flex;
+
+    .msg-avatar {
+        margin-right: 15px;
+
+        img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid $border-light-color;
+        }
+    }
+
+    .msg-box {
+        max-width: 65%;
+
+        .msg-header {
+            display: flex;
+            justify-content: space-between;
+
+            span {
+                // Data messaggio
+                color: $text-secondary-color;
+                font-weight: bold;
+                font-size: 14px;
+            }
+        }
+    }
+
+    .msg-bubble {
+        margin: 10px 0px 20px 15px;
+        position: relative;
+        width: auto;
+        height: auto;
+        background-color: $msg-color1;
+
+        div {
+            padding: 1em;
+            text-align: left;
+            line-height: 1.5em;
+        }
+
+        p {
+            /* Rimuoviamo i margini di default del paragrafo */
+            -webkit-margin-before: 0em;
+            -webkit-margin-after: 0em;
+        }
+
+        &:after {
+            content: " ";
+            position: absolute;
+            width: 0;
+            height: 0;
+            left: -10px;
+            right: auto;
+            top: 0px;
+            bottom: auto;
+            border: 20px solid;
+            border-color: $msg-color1 transparent transparent transparent;
+        }
+    }
+}
+

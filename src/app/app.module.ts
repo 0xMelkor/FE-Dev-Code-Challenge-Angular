@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Conversation, ConversationService } from './application';
 import { BoardRepository, BoardRepositoryService } from './infrastructure';
-import { AdvancedNotesComponent } from './presentation/advanced-notes/advanced-notes.component';
+import { AdvancedNotesComponent } from './presentation/advanced-notes.component';
+import { MessageComponent } from './presentation/message/message.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdvancedNotesComponent
+    AdvancedNotesComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,

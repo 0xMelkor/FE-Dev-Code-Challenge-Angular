@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/internal/operators';
+import { map } from 'rxjs/operators';
 import { Board, Note, Person } from '../../domain';
 import { BoardRepository } from '../../infrastructure';
 import { Conversation } from './conversation';
@@ -18,6 +18,7 @@ export class ConversationService extends Conversation {
         private repository: BoardRepository
     ) {
         super();
+        this.mermberIdsFilter = [];
     }
 
     /** @override */

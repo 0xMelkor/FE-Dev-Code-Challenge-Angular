@@ -1,0 +1,18 @@
+<div class="msg">
+    <div class="msg-avatar">
+        <img [src]="'/assets/images/1.png'" alt="Avatar" >
+    </div>
+    <div class="msg-box">
+        <div class="msg-header">
+            <strong>{{message?.getAuthorDisplayName()}}</strong>
+            <span>
+                {{message?.getPublishingDate() | date:'dd/MM/yyyy - hh:mm'}}
+            </span>
+        </div>
+        <div class="msg-bubble">
+            <div>
+                <p>{{message?.getText()}}</p>
+            </div>
+        </div>
+    </div>
+</div>

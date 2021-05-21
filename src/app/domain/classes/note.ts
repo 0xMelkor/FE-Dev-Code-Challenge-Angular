@@ -30,8 +30,8 @@ export class Note {
         return this.author.getSurname();
     }
 
-    getAuthor(): Person {
-        return this.author;
+    authorThumbUrl(): string {
+        return this.author.getThumbUrl();
     }
 
     getPublishingDate(): Date {

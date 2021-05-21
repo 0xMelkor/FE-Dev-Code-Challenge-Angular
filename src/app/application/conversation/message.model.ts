@@ -4,6 +4,7 @@ export class Message {
 
     private authorId: string;
     private authorDisplayName: string;
+    private authorThumbUrl: string;
     private publishingDate: Date;
     private text: string;
     private fromLoggedUser: boolean;
@@ -24,6 +25,10 @@ export class Message {
         return this.text;
     }
 
+    getAuthorThumbUrl(): string {
+        return this.authorThumbUrl;
+    }
+
     isFromLoggedUser(): boolean {
         return this.fromLoggedUser;
     }
@@ -34,7 +39,8 @@ export class Message {
             authorDisplayName: `${note.authorName()} ${note.authorSurname()}`,
             publishingDate: note.getPublishingDate(),
             text: note.getText(),
-            fromLoggedUser: loggedUserId === note.authorId()
+            fromLoggedUser: loggedUserId === note.authorId(),
+            authorThumbUrl: note.authorThumbUrl()
         });
     }
 }
