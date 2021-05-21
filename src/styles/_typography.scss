@@ -1,0 +1,25 @@
+
+
+@font-face {
+    font-family: $font-family;
+    src: url(./fonts/univers-lt-std-55-roman.otf) format('openType');
+    font-weight: 55;
+}
+
+@font-face {
+    font-family: $font-bold;
+    src: url(./fonts/univers-lt-std-65-bold.otf) format('openType');
+    font-weight: 65;
+}
+
+body {
+    font-family: $font-family;
+    letter-spacing: 0;
+}
+
+p {
+    font-family: $font-family; 
+    font-size: 16px;
+    color: $colot-text-primary;
+    line-height: 22px;
+}

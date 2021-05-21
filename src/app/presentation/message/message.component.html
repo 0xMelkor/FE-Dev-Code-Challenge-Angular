@@ -1,12 +1,12 @@
 <div class="msg">
     <div class="msg-avatar">
-        <img [src]="'/assets/images/1.png'" alt="Avatar" >
+        <img [src]="message?.getAuthorThumbUrl()" alt="Avatar" >
     </div>
     <div class="msg-box">
         <div class="msg-header">
-            <strong>{{message?.getAuthorDisplayName()}}</strong>
+            <span>{{message?.getAuthorDisplayName()}}</span>
             <span>
-                {{message?.getPublishingDate() | date:'dd/MM/yyyy - hh:mm'}}
+                {{message?.getPublishingDate() | date:'dd/MM/yyyy'}}  &middot; {{message?.getPublishingDate() | date:'hh:mm'}}
             </span>
         </div>
         <div class="msg-bubble">

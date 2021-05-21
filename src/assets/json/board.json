@@ -4,39 +4,39 @@
         "id": "2",
         "name": "Bart",
         "surname": "Simpson",
-        "thumbUrl": "/assets/images/2.png"
+        "thumbUrl": "https://via.placeholder.com/40"
     },
     "people": [
         {
             "id": "1",
             "name": "Homer",
             "surname": "Simpson",
-            "thumbUrl": "/assets/images/1.png"
+            "thumbUrl": "https://via.placeholder.com/40"
         },
         {
             "id": "2",
             "name": "Bart",
             "surname": "Simpson",
-            "thumbUrl": "/assets/images/2.png"
+            "thumbUrl": "https://via.placeholder.com/40"
         },
         {
             "id": "3",
-            "name": "Willie",
-            "surname": "Groundskeeper",
-            "thumbUrl": "/assets/images/3.png"
+            "name": "Name",
+            "surname": "Surname",
+            "thumbUrl": "https://via.placeholder.com/40"
         },
         {
             "id": "4",
             "name": "Ned",
             "surname": "Flanders",
-            "thumbUrl": "/assets/images/4.png"
+            "thumbUrl": "https://via.placeholder.com/40"
         }
     ],
     "notes": [
         {
-            "authorId": "1",
+            "authorId": "3",
             "publishingDateIso": "2021-05-20T10:24:17.250Z",
-            "text": "Doh! Doh! Doh! Doh! Doh! Doh! Doh! Doh! Doh! Doh! Doh! Doh! Doh! Doh! Doh! Doh! Doh! Doh! Doh! Doh! Doh! Doh! Doh! Doh!"
+            "text": "Description Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
         }
     ]
 }

@@ -4,11 +4,10 @@
     max-width: $max-width;
     margin: auto;
     border-radius: 2px;
-    padding: 10px 25px 20px 20px;
+    padding: 10px 20px 20px 20px;
 }
 
 .conversation {
-    border: 3px solid $border-light-color;
     min-height: 300px;
     max-height: 300px;
     overflow-y: auto;
@@ -23,7 +22,7 @@
 
     &::-webkit-scrollbar-thumb {
         border-radius: 10px;
-        background-color: $scrollbar-color;
+        background-color: $color-info;
     }
 
     &::-webkit-scrollbar-track {
