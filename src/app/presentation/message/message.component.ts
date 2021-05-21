@@ -5,9 +5,17 @@ import { Message } from 'src/app/application';
   selector: 'app-message',
   templateUrl: './message.component.html'
 })
-export class MessageComponent {
+export class MessageComponent implements OnInit {
 
   @Input()
   message: Message;
+
+  alignmentClass: string;
+
+  ngOnInit(): void {
+    if(this.message) {
+      this.alignmentClass = this.message.isFromLoggedUser() ? 'right' : 'left';
+    }
+  }
 
 }

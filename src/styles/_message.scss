@@ -1,8 +1,29 @@
 .msg {
     display: flex;
+    margin-bottom: 24px;
+
+    &.left {
+        // Messaggio va a sinistra se viene applicata la classe .left
+        justify-content: flex-start;
+    }
+
+    &.right {
+        // Messaggio va a destra se viene applicata la classe .right
+        justify-content: flex-end;
+    }
 
     .msg-avatar {
-        margin-right: 15px;
+        margin-right: 20px;
+
+        &.left {
+            // Avatar va a sinistra se viene applicata la classe .left
+            order: 0;
+        }
+
+        &.right {
+            // Avatar va a destra se viene applicata la classe .right
+            order: 1;
+        }
 
         img {
             width: 40px;
@@ -14,9 +35,18 @@
     .msg-box {
         max-width: 737px;
 
+        &.left {
+            margin-right: 40px;
+        }
+
+        &.right {
+            margin-right: 20px;
+        }
+
         .msg-header {
             display: flex;
             justify-content: space-between;
+            padding-left: 5px;
 
             span:nth-child(1) {
                 // Nome e cognome
@@ -37,11 +67,10 @@
     }
 
     .msg-bubble {
-        margin: 10px 0px 20px 15px;
+        margin: 10px 0px 20px 6px;
         position: relative;
         width: auto;
         height: auto;
-        background-color: $color-type-1;
 
         div {
             padding: 25px 30px 25px 37px;
@@ -55,17 +84,38 @@
             -webkit-margin-after: 0em;
         }
 
-        &:after {
-            content: " ";
-            position: absolute;
-            width: 0;
-            height: 0;
-            left: -10px;
-            right: auto;
-            top: 0px;
-            bottom: auto;
-            border: 20px solid;
-            border-color: $color-type-1 transparent transparent transparent;
+        &.left {
+            background-color: $color-type-1;
+
+            &:after {
+                content: " ";
+                position: absolute;
+                width: 0;
+                height: 0;
+                left: -10px;
+                right: auto;
+                top: 0px;
+                bottom: auto;
+                border: 20px solid;
+                border-color: $color-type-1 transparent transparent transparent;
+            }
+        }
+
+        &.right {
+            background-color: $color-type-2;
+
+            &:after {
+                content: " ";
+                position: absolute;
+                width: 0;
+                height: 0;
+                left: auto;
+                right: -10px;
+                top: 0px;
+                bottom: auto;
+                border: 20px solid;
+                border-color: $color-type-2 transparent transparent transparent;
+            }
         }
     }
 }
