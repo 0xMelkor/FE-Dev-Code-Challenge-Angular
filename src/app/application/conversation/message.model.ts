@@ -1,6 +1,6 @@
-import { Note } from '../domain';
+import { Note } from '../../domain';
 
-export class ChatBubble {
+export class Message {
 
     private authorId: string;
     private authorDisplayName: string;
@@ -28,8 +28,8 @@ export class ChatBubble {
         return this.fromLoggedUser;
     }
 
-    static from(note: Note, loggedUserId: string): ChatBubble {
-        return Object.assign(new ChatBubble(), {
+    static from(note: Note, loggedUserId: string): Message {
+        return Object.assign(new Message(), {
             authorId: note.authorId(),
             authorDisplayName: `${note.authorName()} ${note.authorSurname()}`,
             publishingDate: note.getPublishingDate(),

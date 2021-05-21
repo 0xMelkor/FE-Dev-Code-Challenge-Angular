@@ -1,6 +1,6 @@
-import { Person } from '../domain';
+import { Person } from '../../domain';
 
-export class ChatMember {
+export class Member {
 
     private id: string;
     private displayName: string;
@@ -18,8 +18,8 @@ export class ChatMember {
         return this.thumbUrl;
     }
 
-    static from(p: Person): ChatMember {
-        return Object.assign(new ChatMember, {
+    static from(p: Person): Member {
+        return Object.assign(new Member, {
             id: p.getId(),
             displayName: `${p.getName()} ${p.getSurname()}`,
             thumbUrl: p.getThumbUrl()

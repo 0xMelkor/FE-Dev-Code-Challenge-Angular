@@ -1,9 +1,10 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ChatRoom, ChatRoomService } from './application';
-import { LoggedUserRepository, LoggedUserRepositoryService, MessageRepository, MessageRepositoryService, PersonRepository, PersonRepositoryService } from './infrastructure';
+import { Conversation, ConversationService } from './application';
+import { BoardRepository, BoardRepositoryService } from './infrastructure';
 import { AdvancedNotesComponent } from './presentation/advanced-notes/advanced-notes.component';
 
 @NgModule({
@@ -13,25 +14,18 @@ import { AdvancedNotesComponent } from './presentation/advanced-notes/advanced-n
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
     {
-      provide: ChatRoom,
-      useClass: ChatRoomService
+      provide: Conversation,
+      useClass: ConversationService
     },
     {
-      provide: PersonRepository,
-      useClass: PersonRepositoryService
-    },
-    {
-      provide: MessageRepository,
-      useClass: MessageRepositoryService
-    },
-    {
-      provide: LoggedUserRepository,
-      useClass: LoggedUserRepositoryService
-    },
+      provide: BoardRepository,
+      useClass: BoardRepositoryService
+    }
   ],
   bootstrap: [AppComponent]
 })

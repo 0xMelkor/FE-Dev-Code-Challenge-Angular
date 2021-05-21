@@ -1,2 +1,3 @@
-export * from './person';
-export * from './note';
+export * from './classes/person';
+export * from './classes/note';
+export * from './classes/board';
