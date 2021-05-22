@@ -1,32 +1,36 @@
 <div class="container">
+    <!-- Main area (left)-->
+    <div>
+        <!-- Chat -->
+        <div class="overlay"></div>
+        <div class="conversation" #scroll [scrollTop]="scroll.scrollHeight">
+            <div class="messages">
+                <app-message
+                    *ngFor="let msg of messages"
+                    [message]="msg"
+                ></app-message>
+            </div>
+        </div>
 
-    <!-- Chat -->
-    <div class="overlay"></div>
-    <div class="conversation" #scroll [scrollTop]="scroll.scrollHeight">
-        <div class="messages">
-            <app-message
-                *ngFor="let msg of messages"
-                [message]="msg"
-            ></app-message>
+        <!--Input box-->
+        <div class="tools">
+            <div>
+                <form (ngSubmit)="onSubmit()">
+                    <input
+                        type="text"
+                        [formControl]="textCtrl"
+                        [placeholder]="placeholderText"
+                        [attr.aria-placeholder]="placeholderText">
+                    <div class="submit">
+                        <button type="submit">Publish</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
-    <!--Input box-->
-    <div class="tools">
-        <div>
-            <form (ngSubmit)="onSubmit()">
-                <input
-                    type="text"
-                    [formControl]="textCtrl"
-                    [placeholder]="placeholderText"
-                    [attr.aria-placeholder]="placeholderText">
-                <div class="submit">
-                    <button type="submit">Publish</button>
-                </div>
-            </form>
-        </div>
-    </div>
 
+    <!-- Filter area (right)-->
     <app-filter [members]="members"></app-filter>
 
 </div>

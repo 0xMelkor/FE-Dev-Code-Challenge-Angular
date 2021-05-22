@@ -8,6 +8,7 @@ $tools-height: 114px;
     margin: 264px auto 217px auto;
     position: relative;
     border-radius: 2px;
+    display: flex;
 
     .overlay {
         position: absolute;
@@ -89,15 +90,11 @@ $tools-height: 114px;
 }
 
 /* Filtro messaggi */
-.filter {
 
+.filter {
     $items-margin: 20px;
 
-    @include border-top-shadow();
-    width: 100%;
     padding: 20px;
-    position: absolute;
-    bottom: $tools-height;
     box-sizing: border-box;
     background-color: $color-background;
 
@@ -120,4 +117,27 @@ $tools-height: 114px;
         height: 40px;
         border-radius: 50%;
     }
+
+    div {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
+
+app-filter {
+    z-index: 2;
+}
+
+// Gestione del layout su schermi piccoli quando il filtro dei membri è attivo
+@media only screen and (max-width: $small-screen) {
+    .container {
+        flex-wrap: wrap-reverse;
+    }
+
+    app-filter {
+        @include border-bottom-shadow() ;
+        flex-grow: 1;
+    }
+}
+
