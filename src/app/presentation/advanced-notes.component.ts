@@ -9,10 +9,16 @@ import { Conversation, Member, Message } from '../application';
 })
 export class AdvancedNotesComponent implements OnInit, OnDestroy {
 
+  @ViewChild('scroll')
+  scrollArea: ElementRef;
+
   messages: Message[];
   members: Member[];
+  filteredMembers: Member[];
   textCtrl: FormControl;
   placeholderText: string;
+  filterIsActive: boolean;
+  showOverlay: boolean;
 
   private subscriptions: Subscription[];
 
@@ -25,6 +31,7 @@ export class AdvancedNotesComponent implements OnInit, OnDestroy {
     this.messages = [];
     this.members = [];
     this.subscriptions = [];
+    this.filterIsActive = false;
     this.textCtrl = this.fb.control(null, [Validators.required]);
   }
 
@@ -37,6 +44,8 @@ export class AdvancedNotesComponent implements OnInit, OnDestroy {
       .join()
       .then(() => {
         this.members = this.conversation.members();
+        // Il filtro iniziale comprende tutti i membri
+        this.filteredMembers = this.members; 
         this.listenMessages();
       })
       .catch(e => {
@@ -57,6 +66,9 @@ export class AdvancedNotesComponent implements OnInit, OnDestroy {
 
   private scrollBottom() {
     this.cdr.detectChanges();
+    const el = this.scrollArea.nativeElement;
+    el.scrollTop = el.scrollHeight;
+    this.cdr.detectChanges();
   }
 
   async onSubmit() {
@@ -64,6 +76,15 @@ export class AdvancedNotesComponent implements OnInit, OnDestroy {
       await this.conversation.postMessage(this.textCtrl.value);
       this.textCtrl.setValue(null);
     }
+  }
+
+  onScroll(evt: any) {
+    const scrollTop = evt.target.scrollTop;
+    this.showOverlay = scrollTop > 30;
+  }
+
+  onFilterChange(members: Member[]) {
+    this.conversation.filter(members);
   }
 
 }

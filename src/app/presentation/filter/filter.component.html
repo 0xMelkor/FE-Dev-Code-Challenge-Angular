@@ -1,6 +1,6 @@
-<div class="filter">
+<div *ngIf="formGroup" [formGroup]="formGroup" class="filter">
     <div *ngFor="let m of members" class="member">
-        <input type="checkbox">
+        <input [formControlName]="m.getId()" type="checkbox">
         <img [src]="m?.getThumbUrl()" alt="Avatar" >
         <div>{{m?.getDisplayName()}}</div>
     </div>

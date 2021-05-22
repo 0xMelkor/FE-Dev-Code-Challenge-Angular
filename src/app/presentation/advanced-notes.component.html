@@ -1,9 +1,9 @@
 <div class="container">
     <!-- Main area (left)-->
-    <div>
+    <div class="content">
         <!-- Chat -->
-        <div class="overlay"></div>
-        <div class="conversation" #scroll [scrollTop]="scroll.scrollHeight">
+        <div class="overlay" *ngIf="showOverlay"></div>
+        <div class="conversation" #scroll (scroll)="onScroll($event)">
             <div class="messages">
                 <app-message
                     *ngFor="let msg of messages"
@@ -15,6 +15,7 @@
         <!--Input box-->
         <div class="tools">
             <div>
+
                 <form (ngSubmit)="onSubmit()">
                     <input
                         type="text"
@@ -22,6 +23,7 @@
                         [placeholder]="placeholderText"
                         [attr.aria-placeholder]="placeholderText">
                     <div class="submit">
+                        <button type="button" (click)="filterIsActive=true">Filter messages</button>
                         <button type="submit">Publish</button>
                     </div>
                 </form>
@@ -31,6 +33,10 @@
 
 
     <!-- Filter area (right)-->
-    <app-filter [members]="members"></app-filter>
+    <app-filter 
+        *ngIf="filterIsActive" 
+        [members]="members" 
+        [selectedMembers]="filteredMembers"
+        (filterChange)="onFilterChange($event)"></app-filter>
 
 </div>

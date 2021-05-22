@@ -21,7 +21,12 @@ $tools-height: 114px;
     }
 }
 
+.content {
+    flex-grow: 1;
+}
+
 .conversation {
+
     min-height: $min-height;
     max-height: $max-height;
     padding-left: 20px;
@@ -71,26 +76,32 @@ $tools-height: 114px;
             padding: 0;
         }
 
-        button {
+        button[type="submit"] {
+            // Submit text button
             background-color: $color-accent;
-            border: none;
-            border-radius: 4px;
-            padding: 5px 15px;
-            margin-top: 10px;
-            color: $color-button-text;
-            font-family: $font-family;
-            font-size: 16px;
-            cursor: pointer;
-
-            &:active {
-                opacity: 0.6;
-            }
+            margin-left: 10px;
         }
     }
 }
 
-/* Filtro messaggi */
+button {
+    border: none;
+    border-radius: 4px;
+    padding: 5px 15px;
+    margin-top: 10px;
+    color: $color-button-text;
+    background-color: $color-info;
+    font-family: $font-family;
+    font-size: 16px;
+    cursor: pointer;
 
+    &:active {
+        opacity: 0.6;
+    }
+}
+
+
+/* Filtro messaggi */
 .filter {
     $items-margin: 20px;
 

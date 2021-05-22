@@ -2,6 +2,10 @@
     display: flex;
     margin-bottom: 24px;
 
+    &:first-child {
+        margin-top: 30px;
+    }
+
     &:last-child {
         margin-bottom: 5px;
     }
@@ -37,6 +41,7 @@
 
     .msg-box {
         max-width: 737px;
+        min-width: 350px;
 
         &.left {
             margin-left: 20px;

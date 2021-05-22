@@ -27,6 +27,7 @@ export class ConversationService extends Conversation {
         const notes: Note[] = this.board.getNotes();
         const msgs = notes.map((n: Note) => this.toMessage(n));
         this.messages$ = new BehaviorSubject(msgs);
+        this.mermberIdsFilter = this.board.getPeople().map((p: Person) => p.getId());
     }
 
     /** @override */
@@ -69,8 +70,8 @@ export class ConversationService extends Conversation {
         return msgs.filter((b: Message) => {
             const authorId: string = b.getAuthorId();
             const isLoggedUser = authorId === this.board.getUserId();
-            const memberNotInFilter = this.mermberIdsFilter.indexOf(authorId) === -1;
-            return isLoggedUser || memberNotInFilter;
+            const memberInFilter = this.mermberIdsFilter.indexOf(authorId) !== -1;
+            return isLoggedUser || memberInFilter;
         })
     }
 
