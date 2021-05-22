@@ -9,13 +9,15 @@ import { BoardRepository, BoardRepositoryService } from './infrastructure';
 import { AdvancedNotesComponent } from './presentation/advanced-notes.component';
 import { MessageComponent } from './presentation/message/message.component';
 import { ResponsiveTextComponent } from './presentation/message/responsive-text/responsive-text.component';
+import { FilterComponent } from './presentation/filter/filter.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdvancedNotesComponent,
     MessageComponent,
-    ResponsiveTextComponent
+    ResponsiveTextComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,

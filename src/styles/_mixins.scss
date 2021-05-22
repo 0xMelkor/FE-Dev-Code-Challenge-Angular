@@ -4,6 +4,12 @@
   box-shadow: $top $left $blur $color;
 }
 
+@mixin border-top-shadow() {
+  -webkit-box-shadow: 0px -4px 3px rgb(50 50 50 / 26%);
+  -moz-box-shadow: 0px -4px 3px rgb(50 50 50 / 26%);
+  box-shadow: 0px -4px 3px rgb(50 50 50 / 26%);
+}
+
 @mixin placeholder($color) {
   &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: $color;

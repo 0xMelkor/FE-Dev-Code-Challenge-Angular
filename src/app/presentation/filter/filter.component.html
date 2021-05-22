@@ -1,0 +1,7 @@
+<div class="filter">
+    <div *ngFor="let m of members" class="member">
+        <input type="checkbox">
+        <img [src]="m?.getThumbUrl()" alt="Avatar" >
+        <span>{{m?.getDisplayName()}}</span>
+    </div>
+</div>
