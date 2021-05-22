@@ -41,7 +41,7 @@
 
     .msg-box {
         max-width: 737px;
-        min-width: 350px;
+        min-width: 245px;
 
         &.left {
             margin-left: 20px;
@@ -136,3 +136,7 @@
     -webkit-box-orient: vertical;
      overflow: hidden;
 }
+
+.wrap { 
+    word-break: break-all;
+ }
