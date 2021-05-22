@@ -2,37 +2,42 @@
     "id": "0001",
     "user": {
         "id": "2",
-        "name": "Bart",
-        "surname": "Simpson",
-        "thumbUrl": "https://via.placeholder.com/40"
+        "name": "Jubei",
+        "surname": "Kibagami",
+        "thumbUrl": "/assets/images/2.png"
     },
     "people": [
         {
             "id": "1",
-            "name": "Homer",
-            "surname": "Simpson",
-            "thumbUrl": "https://via.placeholder.com/40"
+            "name": "Asuka",
+            "surname": "Soryu Langley",
+            "thumbUrl": "/assets/images/1.jpeg"
         },
         {
             "id": "2",
-            "name": "Bart",
-            "surname": "Simpson",
-            "thumbUrl": "https://via.placeholder.com/40"
+            "name": "Jubei",
+            "surname": "Kibagami",
+            "thumbUrl": "/assets/images/2.jpeg"
         },
         {
             "id": "3",
-            "name": "Name",
-            "surname": "Surname",
-            "thumbUrl": "https://via.placeholder.com/40"
+            "name": "Rei",
+            "surname": "Ayanami",
+            "thumbUrl": "/assets/images/3.jpeg"
         },
         {
             "id": "4",
-            "name": "Ned",
-            "surname": "Flanders",
-            "thumbUrl": "https://via.placeholder.com/40"
+            "name": "Shinji",
+            "surname": "Ikari",
+            "thumbUrl": "/assets/images/4.jpeg"
         }
     ],
     "notes": [
+        {
+            "authorId": "1",
+            "publishingDateIso": "2021-05-20T10:21:17.250Z",
+            "text": "Description Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        },
         {
             "authorId": "3",
             "publishingDateIso": "2021-05-20T10:24:17.250Z",

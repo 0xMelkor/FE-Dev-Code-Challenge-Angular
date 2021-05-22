@@ -14,7 +14,6 @@ export class AdvancedNotesComponent implements OnInit, OnDestroy {
 
   messages: Message[];
   members: Member[];
-  filteredMembers: Member[];
   textCtrl: FormControl;
   placeholderText: string;
   filterIsActive: boolean;
@@ -44,8 +43,6 @@ export class AdvancedNotesComponent implements OnInit, OnDestroy {
       .join()
       .then(() => {
         this.members = this.conversation.members();
-        // Il filtro iniziale comprende tutti i membri
-        this.filteredMembers = this.members; 
         this.listenMessages();
       })
       .catch(e => {
@@ -85,6 +82,11 @@ export class AdvancedNotesComponent implements OnInit, OnDestroy {
 
   onFilterChange(members: Member[]) {
     this.conversation.filter(members);
+  }
+
+  onFilterClose() {
+    this.conversation.resetFilter();
+    this.filterIsActive = false;
   }
 
 }

@@ -64,6 +64,9 @@
                 font-size: 14px;
                 color: $color-text-displayname;
                 line-height: 18px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
 
             span:nth-child(2) {

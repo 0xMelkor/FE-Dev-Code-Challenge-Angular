@@ -1,7 +1,10 @@
+
 <div *ngIf="formGroup" [formGroup]="formGroup" class="filter">
+    <div class="close" (click)="close.emit()"> <span class="material-icons-outlined">close</span> </div>
+    <hr>
     <div *ngFor="let m of members" class="member">
         <input [formControlName]="m.getId()" type="checkbox">
         <img [src]="m?.getThumbUrl()" alt="Avatar" >
-        <div>{{m?.getDisplayName()}}</div>
+        <p>{{m?.getDisplayName()}}</p>
     </div>
 </div>

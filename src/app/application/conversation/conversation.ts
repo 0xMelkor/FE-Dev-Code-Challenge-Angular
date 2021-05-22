@@ -34,4 +34,9 @@ export abstract class Conversation {
      * @param users The list of users to be filtered
      */
     abstract filter(people: Member[]);
+
+    /**
+     * Resets the filter applied to the messages stream.
+     */
+    abstract resetFilter();
 }

@@ -44,6 +44,13 @@ export class ConversationService extends Conversation {
     }
 
     /** @override */
+    resetFilter() {
+        const allPeople = this.board.getPeople();
+        this.mermberIdsFilter = allPeople.map((p: Person) => p.getId());
+        this.notifyMessagesUpdate();
+    }
+
+    /** @override */
     async postMessage(text: string): Promise<void> {
         const publishingDate = new Date();
         const author: Person = this.board.getUser();
@@ -69,16 +76,15 @@ export class ConversationService extends Conversation {
         msgs = msgs || [];
         return msgs.filter((b: Message) => {
             const authorId: string = b.getAuthorId();
-            const isLoggedUser = authorId === this.board.getUserId();
             const memberInFilter = this.mermberIdsFilter.indexOf(authorId) !== -1;
-            return isLoggedUser || memberInFilter;
+            return memberInFilter;
         })
     }
 
     private sortByDateDesc(msgs: Message[]): Message[] {
-       return msgs.sort((m1: Message, m2: Message) => {
-                return +m1.getPublishingDate() - +m2.getPublishingDate();
-            });
+        return msgs.sort((m1: Message, m2: Message) => {
+            return +m1.getPublishingDate() - +m2.getPublishingDate();
+        });
     }
 
     private async notifyMessagesUpdate() {

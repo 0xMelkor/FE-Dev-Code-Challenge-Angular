@@ -33,10 +33,12 @@
 
 
     <!-- Filter area (right)-->
-    <app-filter 
-        *ngIf="filterIsActive" 
-        [members]="members" 
-        [selectedMembers]="filteredMembers"
-        (filterChange)="onFilterChange($event)"></app-filter>
+    <div *ngIf="filterIsActive" class="filter">
+        <app-filter 
+            [members]="members" 
+            (filterChange)="onFilterChange($event)"
+            (close)="onFilterClose()">
+        </app-filter>
+    </div>
 
 </div>

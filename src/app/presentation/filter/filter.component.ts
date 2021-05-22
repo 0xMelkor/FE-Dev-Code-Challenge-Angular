@@ -12,19 +12,21 @@ export class FilterComponent implements OnInit, OnDestroy {
   @Input()
   members: Member[];
 
-  @Input()
-  selectedMembers: Member[];
-
   @Output()
   filterChange: EventEmitter<Member[]>;
+
+  @Output()
+  close: EventEmitter<void>;
 
   formGroup: FormGroup;
 
   private subscriprions: Subscription[];
+  private selectedMembers: Member[];
 
   constructor(private fb: FormBuilder) {
     this.subscriprions = [];
     this.filterChange = new EventEmitter();
+    this.close = new EventEmitter();
   }
 
   ngOnDestroy(): void {
@@ -32,8 +34,9 @@ export class FilterComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.selectedMembers = this.selectedMembers || [];
     this.members = this.members || [];
+    this.selectedMembers = this.members;
+
     this.sortMembers();
     this.initFormGroup();
     this.listenFormChange();
