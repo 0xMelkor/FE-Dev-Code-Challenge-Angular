@@ -11,7 +11,7 @@
         </div>
         <div class="msg-bubble" [ngClass]="alignmentClass">
             <div>
-                <p>{{message?.getText()}}</p>
+               <app-responsive-text [text]="message?.getText()"></app-responsive-text>
             </div>
         </div>
     </div>

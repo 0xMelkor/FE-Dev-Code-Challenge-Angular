@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Message } from 'src/app/application';
 
 @Component({
@@ -13,9 +13,8 @@ export class MessageComponent implements OnInit {
   alignmentClass: string;
 
   ngOnInit(): void {
-    if(this.message) {
+    if (this.message) {
       this.alignmentClass = this.message.isFromLoggedUser() ? 'right' : 'left';
     }
   }
-
 }

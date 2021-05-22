@@ -3,3 +3,18 @@
   -moz-box-shadow: $top $left $blur $color;
   box-shadow: $top $left $blur $color;
 }
+
+@mixin placeholder($color) {
+  &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: $color;
+    opacity: 1; /* Firefox */
+  }
+  
+  &::-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: $color;
+  }
+  
+  &::-ms-input-placeholder { /* Microsoft Edge */
+    color: $color;
+  }
+}

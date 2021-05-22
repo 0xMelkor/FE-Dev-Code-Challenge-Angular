@@ -1,0 +1,2 @@
+<p #msgText [ngClass]="{'clamp': textOverflowed && collapsed}">{{text}}</p>
+<a *ngIf="textOverflowed && collapsed" (click)="collapsed = !collapsed" href="javascript:void(0);">Show More</a>

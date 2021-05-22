@@ -7,12 +7,14 @@ import { Conversation, ConversationService } from './application';
 import { BoardRepository, BoardRepositoryService } from './infrastructure';
 import { AdvancedNotesComponent } from './presentation/advanced-notes.component';
 import { MessageComponent } from './presentation/message/message.component';
+import { ResponsiveTextComponent } from './presentation/message/responsive-text/responsive-text.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdvancedNotesComponent,
-    MessageComponent
+    MessageComponent,
+    ResponsiveTextComponent
   ],
   imports: [
     BrowserModule,

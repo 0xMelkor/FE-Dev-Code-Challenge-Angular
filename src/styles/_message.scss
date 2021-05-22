@@ -2,6 +2,10 @@
     display: flex;
     margin-bottom: 24px;
 
+    &:last-child {
+        margin-bottom: 5px;
+    }
+
     &.left {
         // Messaggio va a sinistra se viene applicata la classe .left
         justify-content: flex-start;
@@ -13,7 +17,6 @@
     }
 
     .msg-avatar {
-        margin-right: 20px;
 
         &.left {
             // Avatar va a sinistra se viene applicata la classe .left
@@ -36,10 +39,12 @@
         max-width: 737px;
 
         &.left {
+            margin-left: 20px;
             margin-right: 40px;
         }
 
         &.right {
+            margin-left: 40px;
             margin-right: 20px;
         }
 
@@ -73,15 +78,16 @@
         height: auto;
 
         div {
+            /* Contenitore del messaggio */
             padding: 25px 30px 25px 37px;
             text-align: left;
             line-height: 1.5em;
-        }
 
-        p {
-            /* Rimuoviamo i margini di default del paragrafo */
-            -webkit-margin-before: 0em;
-            -webkit-margin-after: 0em;
+            p {
+                display: -webkit-box;
+                -webkit-margin-before: 0em;
+                -webkit-margin-after: 0em;
+            }
         }
 
         &.left {
@@ -118,4 +124,10 @@
             }
         }
     }
+}
+
+.clamp {
+    -webkit-line-clamp: 3; /* massimo numero di linee */
+    -webkit-box-orient: vertical;
+     overflow: hidden;
 }

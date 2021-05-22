@@ -1,8 +1,16 @@
 <div class="container">
+    <div class="overlay"></div>
     <div class="conversation">
         <div class="messages">
             <app-message *ngFor="let msg of messages" [message]="msg"></app-message>
         </div>
-        <div class="tools"></div>
+    </div>
+    <div class="tools">
+        <div>
+            <input type="text" placeholder="Enter note about the process" aria-placeholder="Enter note about the process">
+            <div class="submit">
+                <button type="submit">Publish</button>
+            </div>
+        </div>
     </div>
 </div>
