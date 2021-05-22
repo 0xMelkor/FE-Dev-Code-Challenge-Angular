@@ -22,32 +22,13 @@ $tools-height: 114px;
 }
 
 .content {
-    flex-grow: 1;
+    flex: 1 2 auto;
 }
 
 .conversation {
-    min-height: $min-height;
-    max-height: $max-height;
+    @include scrollbar($min-height, $max-height);
     padding-left: 20px;
     padding-right: 20px;
-    overflow-y: auto;
-
-    &::-webkit-scrollbar {
-        -webkit-appearance: none;
-    }
-
-    &::-webkit-scrollbar:vertical {
-        width: 8px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        border-radius: 10px;
-        background-color: $color-info;
-    }
-
-    &::-webkit-scrollbar-track {
-        background: $color-scrollbar-background;
-    }
 }
 
 .tools {
@@ -103,17 +84,19 @@ button {
 .filter {
     $items-margin: 10px;
 
-    padding: 10px 0 10px 10px;
+    @include scrollbar(100%, 100%);
+    flex: 1 1 300px;
+    padding: 5px 0 10px 10px;
     box-sizing: border-box;
     background-color: $color-background;
     z-index: 2;
-    flex-shrink: 0;
-    min-width: 300px;
 
     .close {
+        @include border-bottom-shadow();
         text-align: right;
         cursor: pointer;
         padding-right: 20px;
+        margin-bottom: 10px;
 
         &:hover {
             opacity: 0.5;
@@ -133,6 +116,7 @@ button {
         min-width: 20px;
         max-height: 20px;
         border-width: 0 2px 2px 0;
+        flex-shrink: 1;
     }
 
     img {
@@ -140,13 +124,14 @@ button {
         width: 40px;
         height: 40px;
         border-radius: 50%;
+        flex-shrink: 1;
     }
 
     p {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        width: 132px;
+        flex-shrink: 1;
     }
 }
 
@@ -159,8 +144,6 @@ button {
     }
 
     .filter {
-        @include border-bottom-shadow();
-        flex-grow: 1;
         width: 100%;
     }
 }

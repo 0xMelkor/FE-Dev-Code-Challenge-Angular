@@ -67,6 +67,7 @@
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
+                flex-shrink: 1;
             }
 
             span:nth-child(2) {
@@ -75,6 +76,7 @@
                 font-size: 12px;
                 color: $color-info;
                 line-height: 18px;
+                flex-shrink: 0;
             }
         }
     }
