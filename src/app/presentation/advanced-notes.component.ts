@@ -1,4 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Conversation, Member, Message } from '../application';
 
@@ -10,13 +11,21 @@ export class AdvancedNotesComponent implements OnInit, OnDestroy {
 
   messages: Message[];
   members: Member[];
+  textCtrl: FormControl;
+  placeholderText: string;
 
   private subscriptions: Subscription[];
 
-  constructor(private conversation: Conversation) {
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private fb: FormBuilder,
+    private conversation: Conversation
+    ) {
+    this.placeholderText = 'Enter note about the process';
     this.messages = [];
     this.members = [];
     this.subscriptions = [];
+    this.textCtrl = this.fb.control(null, [Validators.required]);
   }
 
   ngOnDestroy(): void {
@@ -41,8 +50,20 @@ export class AdvancedNotesComponent implements OnInit, OnDestroy {
         .messages()
         .subscribe((msgs: Message[]) => {
           this.messages = msgs;
+          this.scrollBottom();
         })
     );
+  }
+
+  private scrollBottom() {
+    this.cdr.detectChanges();
+  }
+
+  async onSubmit() {
+    if(this.textCtrl.valid) {
+      await this.conversation.postMessage(this.textCtrl.value);
+      this.textCtrl.setValue(null);
+    }
   }
 
 }

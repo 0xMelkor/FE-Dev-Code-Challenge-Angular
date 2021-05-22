@@ -11,7 +11,9 @@ export class LocalStorage {
     }
 
     persist(note: NoteEntity) {
-        const json: string = JSON.stringify(note);
+        const allNotes: NoteEntity[] = this.findAll();
+        allNotes.push(note);
+        const json: string = JSON.stringify(allNotes);
         window.localStorage.setItem(this.NOTES_RECORD, json);
     }
 }
