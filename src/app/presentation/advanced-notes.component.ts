@@ -1,7 +1,8 @@
 import { ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { Conversation, Member, Message } from '../application';
+import { Member, Message } from '../application';
+import {Conversation} from '../application/conversation/conversation';
 
 @Component({
   selector: 'app-advanced-notes',
