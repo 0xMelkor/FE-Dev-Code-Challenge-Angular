@@ -11,7 +11,7 @@ The project is then structured into 4 different layers:
 
 * **Infrastructure:** It represents the actual "physical" infrastructure supporting our application (Relational DB, Websocket, REST ecc.). It has strong relashionships with dev frameworks (Angular in this case) and with communication means that deal with the "persistence" layer. The "application" layer commucates with the "infrastructure" through abstractions. That effectively creates a sealed boundary between layers.
 
-* **Presentation:**  This layer is intended to expose Use-Cases to the final user. "Presentation" is connected to the "application" via abstractions classes that expose interfaces to correctly support the Use-Case.
+* **Presentation:**  It is intended to expose Use-Cases to the final user. "Presentation" is connected to the "application" via abstractions classes that expose interfaces to correctly support the Use-Case.
 
 
 
