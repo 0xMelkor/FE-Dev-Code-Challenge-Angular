@@ -25,8 +25,8 @@ export class AdvancedNotesComponent implements OnInit, OnDestroy {
 
   constructor(
     private fb: FormBuilder,
-    private cdr: ChangeDetectorRef, // Helps us with change detection
-    private conversation: Conversation // Exposes full Use-Case logic to the component
+    private cdr: ChangeDetectorRef,
+    private conversation: Conversation
   ) {
     this.messages = [];
     this.members = [];
