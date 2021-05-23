@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { Member } from 'src/app/application';
+import { Member } from '../../application';
 
 @Component({
   selector: 'app-filter',
