@@ -138,7 +138,7 @@ button {
 // Gestione del layout su schermi piccoli quando il filtro dei membri è attivo
 @media only screen and (max-width: $small-screen) {
     .container {
-        // Manda in testa il filtro
+        // Manda a capo il filtro
         flex-direction: column;
         margin: 0px auto 0px auto;
     }
