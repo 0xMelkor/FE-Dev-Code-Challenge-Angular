@@ -5,8 +5,8 @@
         <div class="overlay" *ngIf="showOverlay"></div> <!-- White shadow -->
 
         <div class="conversation" #scroll (scroll)="onScroll($event)"> <!-- Chat -->
-                <div class="empty">
-                    <app-empty-view *ngIf="messages?.length == 0"></app-empty-view>
+                <div *ngIf="messages?.length == 0" class="empty">
+                    <app-empty-view></app-empty-view>
                 </div>
                 <app-message *ngFor="let msg of messages" [message]="msg" ></app-message>
         </div>
