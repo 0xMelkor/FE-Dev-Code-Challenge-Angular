@@ -1,27 +1,17 @@
-# FeDevCodeChallenge
+# Advanced Notes
+This project has been developed with Domain Driven Design (DDD) principles in mind. This lead to an architectural structure with proven separation of concerns and high scalability and maintanability capabilities. 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.6.
+![image info](./docs/architecture.png)
 
-## Development server
+The project is then structured into 4 different layers:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* **Domain:** It is the main sphere of knowledge or activity we are trying to address with our application. Contains representation of business entities and rules that in geneal are not likely to change (ideally they never change).
 
-## Code scaffolding
+* **Application:** It is the layer where Use-Cases belong. It contains the application logic built on top of the  "domain". This layer is likely to change faster.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* **Infrastructure:** It represents the actual "physical" infrastructure supporting our application (Relational DB, Websocket, REST ecc.). It has strong relashionships with dev frameworks (Angular in this case) and with communication means that deal with the "persistence" layer. The "application" layer commucates with the "infrastructure" through abstractions. That effectively creates a sealed boundary between layers.
 
-## Build
+* **Presentation:**  This layer is intended to expose Use-Cases to the final user. "Presentation" is connected to the "application" via abstractions classes that expose interfaces to correctly support the Use-Case.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
