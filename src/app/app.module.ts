@@ -28,11 +28,10 @@ import { FilterComponent } from './presentation/filter/filter.component';
     ReactiveFormsModule
   ],
   providers: [
-    ConversationService
-    /*{
+    {
       provide: Conversation,
       useClass: ConversationService
-    },*/,
+    },
     {
       provide: ProcessRepository,
       useClass: ProcessRepositoryService
