@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ConversationService } from './application';
-import {Conversation} from './application'
+import { Conversation } from './application'
 import { ProcessRepository, ProcessRepositoryService } from './infrastructure';
 import { AdvancedNotesComponent } from './presentation/advanced-notes.component';
 import { MessageComponent } from './presentation/message/message.component';

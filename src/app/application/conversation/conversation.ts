@@ -1,7 +1,6 @@
 import { Observable } from 'rxjs';
 import { Message } from './message.model';
 import { Member } from './member.model';
-import { Injectable } from '@angular/core';
 
 /**
  * This is the abstraction related to our Use Case. We shaped our application
@@ -9,7 +8,6 @@ import { Injectable } from '@angular/core';
  * Objects exchanged over the interface are suitable to being rendered in a view,  and 
  * contain all information expressed in the requirements @see{Member} @see{Message}
  */
-@Injectable()
 export abstract class Conversation {
 
     /**
@@ -18,22 +16,22 @@ export abstract class Conversation {
     abstract join(): Promise<void>;
 
     /**
-     * Posts a message to the chatroom on behalf of the connected user.
+     * Posts a message to the conversation on behalf of the connected user.
      * @param text The text to be posted
      * @returns A promise that resolves once the message has been stored in the persistence layer
      */
     abstract postMessage(text: string): Promise<void>;
 
     /**
-     * Gets all the members in the chatroom, comprised the logged user.
-     * @returns A promise that contains a reference to all users belonging to the chatroom
+     * Gets all the members in the conversation, comprised the logged user.
+     * @returns A promise that contains a reference to all users belonging to the conversation
      */
     abstract members(): Member[]
 
     /**
-     * A stream of messages posted to the chatroom by all its members. A new message list is posted when
+     * A stream of messages posted to the conversation by all its members. A new message list is posted when
      * filter is applied.
-     * @returns An observable stream of ChatBubble entities
+     * @returns An observable stream of Message entities
      */
     abstract messages(): Observable<Message[]>;
 
