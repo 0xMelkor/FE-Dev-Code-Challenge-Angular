@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { Conversation, Member, Message } from '../application';
+import { ConversationService, Member, Message } from '../application';
 
 @Component({
   selector: 'app-advanced-notes',
@@ -26,7 +26,7 @@ export class AdvancedNotesComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private cdr: ChangeDetectorRef, // Helps us with change detection
-    private conversation: Conversation // Exposes full Use-Case logic to the component
+    private conversation: ConversationService // Exposes full Use-Case logic to the component
   ) {
     this.messages = [];
     this.members = [];
