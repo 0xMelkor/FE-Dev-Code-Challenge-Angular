@@ -4,7 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { Conversation, ConversationService } from './application';
+import { ConversationService } from './application/conversation/conversation.service';
+import { Conversation } from './application/conversation/conversation'
 import { ProcessRepository, ProcessRepositoryService } from './infrastructure';
 import { AdvancedNotesComponent } from './presentation/advanced-notes.component';
 import { MessageComponent } from './presentation/message/message.component';
