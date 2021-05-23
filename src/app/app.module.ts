@@ -11,6 +11,7 @@ import { AdvancedNotesComponent } from './presentation/advanced-notes.component'
 import { MessageComponent } from './presentation/message/message.component';
 import { ResponsiveTextComponent } from './presentation/message/responsive-text/responsive-text.component';
 import { FilterComponent } from './presentation/filter/filter.component';
+import { EmptyViewComponent } from './presentation/empty-view/empty-view.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FilterComponent } from './presentation/filter/filter.component';
     AdvancedNotesComponent,
     MessageComponent,
     ResponsiveTextComponent,
-    FilterComponent
+    FilterComponent,
+    EmptyViewComponent
   ],
   imports: [
     BrowserModule,

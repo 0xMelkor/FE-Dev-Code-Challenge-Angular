@@ -23,6 +23,7 @@ $tools-height: 114px;
 
 .content {
     flex: 1 2 auto;
+    border-right: 1px solid $color-scrollbar-background;
 }
 
 .conversation {
