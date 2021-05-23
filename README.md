@@ -5,7 +5,7 @@ This project has been developed with Domain Driven Design (DDD) principles in mi
 
 The project is then structured into 4 different layers:
 
-* **Domain:** It is the main sphere of knowledge or activity we are trying to model in the context of our application. Contains representation of business entities and rules that are deeply connected to the company internal processes and the organization itself. This concepts are not likely to change (ideally they never do).
+* **Domain:** It is the main sphere of knowledge or activity we are trying to model in the context of our application. Contains representation of business entities and rules that are deeply connected to the company internal processes and the organization itself. These concepts are not likely to change (ideally they never do).
 
 * **Application:** It is the layer Use-Cases belong to. It contains the application logic built on top of the  "domain". This layer is likely to change faster. 
 
