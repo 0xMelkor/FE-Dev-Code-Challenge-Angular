@@ -37,7 +37,7 @@ export abstract class Conversation {
 
     /**
      * Applies a filter to the stream of messages to show only messages from selected 'people'
-     * @param users The list of users to be filtered
+     * @param people The list of members to be filtered
      */
     abstract filter(people: Member[]);
 
