@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs';
 import { Message } from './message.model';
 import { Member } from './member.model';
+import { Injectable } from '@angular/core';
 
 /**
  * This is the abstraction related to our Use Case. We shaped our application
@@ -8,6 +9,7 @@ import { Member } from './member.model';
  * Objects exchanged over the interface are suitable to being rendered in a view,  and 
  * contain all information expressed in the requirements @see{Member} @see{Message}
  */
+@Injectable()
 export abstract class Conversation {
 
     /**
