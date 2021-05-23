@@ -1,5 +1,8 @@
 import { Note } from '../../domain';
 
+/**
+ * This class provides the useful model to be displayed in a message list 
+ */
 export class Message {
 
     private authorId: string;

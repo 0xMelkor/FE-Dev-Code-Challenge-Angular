@@ -1,5 +1,8 @@
 import { Person } from '../../domain';
 
+/**
+ * This class provides the useful model display user information.
+ */
 export class Member {
 
     private id: string;
