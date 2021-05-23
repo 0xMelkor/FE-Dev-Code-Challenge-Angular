@@ -3,6 +3,11 @@ import { Note } from './note';
 import { Person } from './person';
 import { listOf, notEmpty, ofClass, validate } from '../validation';
 
+/**
+ * "Process" is the main aggregate class in the domain representation. 
+ * It is the main objective of "notes" ( @see {Note} ) exchanged between "people ( @see {Person} )". 
+ * It also refers the user that is interfacing with the application.
+ */
 export class Process {
 
     private constructor(
@@ -10,7 +15,7 @@ export class Process {
         private notes: Note[],
         private people: Person[],
         private user: Person
-    ) {}
+    ) { }
 
     @validate
     static build(
@@ -46,6 +51,4 @@ export class Process {
     getUser(): Person {
         return this.user;
     }
-
-
 }
