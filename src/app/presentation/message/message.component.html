@@ -1,15 +1,20 @@
 <div class="msg" [ngClass]="alignmentClass">
-    <div class="msg-avatar" [ngClass]="alignmentClass">
+
+    <div class="msg-avatar" [ngClass]="alignmentClass"> <!-- Avatar -->
         <img [src]="message?.getAuthorThumbUrl()" alt="Avatar" >
     </div>
-    <div class="msg-box" [ngClass]="alignmentClass">
-        <div class="msg-header">
+
+    <div class="msg-box" [ngClass]="alignmentClass"> <!-- Message container -->
+
+        <div class="msg-header"> <!-- Message author and date -->
             <span>{{message?.getAuthorDisplayName()}}</span>
             <span>
-                {{message?.getPublishingDate() | date:'dd/MM/yyyy'}}  &middot; {{message?.getPublishingDate() | date:'hh:mm'}}
+                {{message?.getPublishingDate() | date:'dd/MM/yyyy'}}  &middot; 
+                {{message?.getPublishingDate() | date:'hh:mm'}}
             </span>
         </div>
-        <div class="msg-bubble" [ngClass]="alignmentClass">
+
+        <div class="msg-bubble" [ngClass]="alignmentClass"> <!-- The actual message with responsive text -->
             <div>
                <app-responsive-text [text]="message?.getText()"></app-responsive-text>
             </div>

@@ -17,7 +17,7 @@ export class Process {
         @notEmpty id: string,
         @listOf(Note.name) notes: Note[],
         @listOf(Person.name) people: Person[],
-        @ofClass(Person.name) user: Person
+        @notNull @ofClass(Person.name) user: Person
     ) {
         return new Process(id, notes, people, user);
     }

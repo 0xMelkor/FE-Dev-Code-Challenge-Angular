@@ -7,6 +7,9 @@ import { Conversation } from './conversation';
 import { Member } from './member.model';
 import { Message } from './message.model';
 
+/**
+ * This is the actual implementation of the Conversation abstraction.
+ */
 @Injectable()
 export class ConversationService extends Conversation {
 

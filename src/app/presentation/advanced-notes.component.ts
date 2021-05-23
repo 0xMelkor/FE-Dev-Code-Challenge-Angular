@@ -10,47 +10,52 @@ import { Conversation, Member, Message } from '../application';
 export class AdvancedNotesComponent implements OnInit, OnDestroy {
 
   @ViewChild('scroll')
-  scrollArea: ElementRef;
+  scrollArea: ElementRef; // we need direct control over the scolling content
 
   messages: Message[];
   members: Member[];
+
   textCtrl: FormControl;
-  placeholderText: string;
+  textCtrlPlaceholder: string;
+
   filterIsActive: boolean;
   showOverlay: boolean;
 
   private subscriptions: Subscription[];
 
   constructor(
-    private cdr: ChangeDetectorRef,
     private fb: FormBuilder,
-    private conversation: Conversation
-    ) {
-    this.placeholderText = 'Enter note about the process';
+    private cdr: ChangeDetectorRef, // Helps us with change detection
+    private conversation: Conversation // Exposes full Use-Case logic to the component
+  ) {
     this.messages = [];
     this.members = [];
     this.subscriptions = [];
     this.filterIsActive = false;
     this.textCtrl = this.fb.control(null, [Validators.required]);
+    this.textCtrlPlaceholder = 'Enter note about the process';
   }
 
   ngOnDestroy(): void {
-    this.subscriptions.forEach(s => s.unsubscribe());
+    this.subscriptions.forEach(s => s.unsubscribe()); // Avoid memory leaks
   }
 
   ngOnInit(): void {
-    this.conversation
-      .join()
+    this.joinConversation();
+  }
+
+  private joinConversation() {
+    this.conversation.join()
       .then(() => {
         this.members = this.conversation.members();
-        this.listenMessages();
+        this.subscribeMsgChannel();
       })
       .catch(e => {
         alert(e);
-      })
+      });
   }
 
-  private listenMessages() {
+  private subscribeMsgChannel() {
     this.subscriptions.push(
       this.conversation
         .messages()
@@ -69,13 +74,14 @@ export class AdvancedNotesComponent implements OnInit, OnDestroy {
   }
 
   async onSubmit() {
-    if(this.textCtrl.valid) {
+    if (this.textCtrl.valid) {
       await this.conversation.postMessage(this.textCtrl.value);
       this.textCtrl.setValue(null);
     }
   }
 
   onScroll(evt: any) {
+    // We listen scroll to toggle the shadow on top
     const scrollTop = evt.target.scrollTop;
     this.showOverlay = scrollTop > 30;
   }
@@ -88,5 +94,4 @@ export class AdvancedNotesComponent implements OnInit, OnDestroy {
     this.conversation.resetFilter();
     this.filterIsActive = false;
   }
-
 }

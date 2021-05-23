@@ -1,2 +1,2 @@
-<p #msgText class="wrap" [ngClass]="{'clamp': textOverflowed && collapsed}">{{text}}</p>
-<a *ngIf="textOverflowed && collapsed" (click)="collapsed = !collapsed" href="javascript:void(0);">Read More</a>
+<p #msgText class="wrap" [ngClass]="{'clamp': textOverflowed && textIsCollapsed}">{{text}}</p>
+<a *ngIf="textOverflowed && textIsCollapsed" (click)="textIsCollapsed = !textIsCollapsed" href="javascript:void(0);">Read More</a>

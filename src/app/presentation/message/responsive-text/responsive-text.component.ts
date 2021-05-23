@@ -6,14 +6,15 @@ import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, 
 })
 export class ResponsiveTextComponent implements AfterViewInit {
 
-  @Input()
-  text
-
+  /** Reference to the paragraph element */
   @ViewChild('msgText')
   msgTextEl: ElementRef;
 
+  @Input()
+  text: string;
+
   textOverflowed: boolean;
-  collapsed: boolean;
+  textIsCollapsed: boolean;
 
   constructor(private cdr: ChangeDetectorRef) {
     this.textOverflowed = false;
@@ -32,7 +33,7 @@ export class ResponsiveTextComponent implements AfterViewInit {
     this.textOverflowed = false;
     this.cdr.detectChanges();
     this.textOverflowed = this.linesNum() > 3;
-    this.collapsed = this.textOverflowed;
+    this.textIsCollapsed = this.textOverflowed;
     this.cdr.detectChanges();
   }
 

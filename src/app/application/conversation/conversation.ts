@@ -2,6 +2,12 @@ import { Observable } from 'rxjs';
 import { Message } from './message.model';
 import { Member } from './member.model';
 
+/**
+ * This is the abstraction related to our Use Case. We shaped our application
+ * logic in the form of a Conversation the user can have with other members about a Process.
+ * Objects exchanged over the interface are suitable to being rendered in a view,  and 
+ * contain all information expressed in the requirements @see{Member} @see{Message}
+ */
 export abstract class Conversation {
 
     /**

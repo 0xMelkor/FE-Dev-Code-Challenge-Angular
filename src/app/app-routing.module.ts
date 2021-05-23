@@ -8,7 +8,7 @@ const routes: Routes = [
     component: AdvancedNotesComponent
   },
   {
-    path: '**',
+    path: '**', // Redirect all routes
     redirectTo: 'advanced-notes',
     pathMatch: 'full'
   }
