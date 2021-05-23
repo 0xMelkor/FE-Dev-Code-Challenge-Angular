@@ -1,4 +1,4 @@
-export interface BoardEntity {
+export interface ProcessEntity {
     id: string;
     user: PersonEntity;
     people: PersonEntity[];

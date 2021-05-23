@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Conversation, ConversationService } from './application';
-import { BoardRepository, BoardRepositoryService } from './infrastructure';
+import { ProcessRepository, ProcessRepositoryService } from './infrastructure';
 import { AdvancedNotesComponent } from './presentation/advanced-notes.component';
 import { MessageComponent } from './presentation/message/message.component';
 import { ResponsiveTextComponent } from './presentation/message/responsive-text/responsive-text.component';
@@ -32,8 +32,8 @@ import { FilterComponent } from './presentation/filter/filter.component';
       useClass: ConversationService
     },
     {
-      provide: BoardRepository,
-      useClass: BoardRepositoryService
+      provide: ProcessRepository,
+      useClass: ProcessRepositoryService
     }
   ],
   bootstrap: [AppComponent]

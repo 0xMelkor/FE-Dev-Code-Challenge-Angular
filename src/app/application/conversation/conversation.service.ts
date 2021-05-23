@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Board, Note, Person } from '../../domain';
-import { BoardRepository } from '../../infrastructure';
+import { Process, Note, Person } from '../../domain';
+import { ProcessRepository } from '../../infrastructure';
 import { Conversation } from './conversation';
 import { Member } from './member.model';
 import { Message } from './message.model';
@@ -10,12 +10,12 @@ import { Message } from './message.model';
 @Injectable()
 export class ConversationService extends Conversation {
 
-    private board: Board;
+    private process: Process;
     private messages$: BehaviorSubject<Message[]>;
     private mermberIdsFilter: string[];
 
     constructor(
-        private repository: BoardRepository
+        private repository: ProcessRepository
     ) {
         super();
         this.mermberIdsFilter = [];
@@ -23,16 +23,16 @@ export class ConversationService extends Conversation {
 
     /** @override */
     async join(): Promise<void> {
-        this.board = await this.repository.find();
-        const notes: Note[] = this.board.getNotes();
+        this.process = await this.repository.find();
+        const notes: Note[] = this.process.getNotes();
         const msgs = notes.map((n: Note) => this.toMessage(n));
         this.messages$ = new BehaviorSubject(msgs);
-        this.mermberIdsFilter = this.board.getPeople().map((p: Person) => p.getId());
+        this.mermberIdsFilter = this.process.getPeople().map((p: Person) => p.getId());
     }
 
     /** @override */
     members(): Member[] {
-        const people: Person[] = this.board.getPeople();
+        const people: Person[] = this.process.getPeople();
         return people.map((p: Person) => Member.from(p));
     }
 
@@ -45,7 +45,7 @@ export class ConversationService extends Conversation {
 
     /** @override */
     resetFilter() {
-        const allPeople = this.board.getPeople();
+        const allPeople = this.process.getPeople();
         this.mermberIdsFilter = allPeople.map((p: Person) => p.getId());
         this.notifyMessagesUpdate();
     }
@@ -53,11 +53,11 @@ export class ConversationService extends Conversation {
     /** @override */
     async postMessage(text: string): Promise<void> {
         const publishingDate = new Date();
-        const author: Person = this.board.getUser();
+        const author: Person = this.process.getUser();
         const note = Note.build(author, publishingDate, text);
 
         await this.repository.saveNote(note);
-        this.board.addNote(note);
+        this.process.addNote(note);
 
         this.notifyMessagesUpdate();
     }
@@ -88,12 +88,12 @@ export class ConversationService extends Conversation {
     }
 
     private async notifyMessagesUpdate() {
-        const notes: Note[] = this.board.getNotes();
+        const notes: Note[] = this.process.getNotes();
         const msgs = notes.map((m: Note) => this.toMessage(m));
         this.messages$.next(msgs);
     }
 
     private toMessage(m: Note): Message {
-        return Message.from(m, this.board.getUser().getId());
+        return Message.from(m, this.process.getUser().getId());
     }
 }

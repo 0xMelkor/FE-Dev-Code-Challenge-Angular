@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Board, Note } from '../../domain';
-import { BoardEntity, NoteEntity } from './storage/entities';
+import { Process, Note } from '../domain';
+import { ProcessEntity, NoteEntity } from './storage/entities';
 import { LocalStorage } from './storage/local.storage';
 import { RemoteStorage } from './storage/remote.storage';
-import { BoardRepository } from './board.repository';
-import { BoardFactory } from './board.factory';
+import { ProcessRepository } from './process.repository';
+import { ProcessFactory } from './process.factory';
 
 @Injectable()
-export class BoardRepositoryService extends BoardRepository {
+export class ProcessRepositoryService extends ProcessRepository {
 
     private localStorage: LocalStorage;
     private remoteStorage: RemoteStorage;
@@ -27,16 +27,16 @@ export class BoardRepositoryService extends BoardRepository {
     }
 
     /**@override */
-    find(): Promise<Board> {
+    find(): Promise<Process> {
         return this.remoteStorage
             .find()
-            .then((board: BoardEntity) => {
+            .then((process: ProcessEntity) => {
                 const localNotes: NoteEntity[] = this.localStorage.findAll();
-                return new BoardFactory(board, localNotes).build();
+                return new ProcessFactory(process, localNotes).build();
             })
             .catch(e => {
                 console.error(e);
-                throw new Error('Unable to instantiate board!')
+                throw new Error('Unable to instantiate process!')
             });
     }
 

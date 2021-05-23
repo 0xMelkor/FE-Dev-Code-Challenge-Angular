@@ -1,26 +1,26 @@
-import { Board, Note, Person } from '../../domain';
-import { BoardEntity, NoteEntity, PersonEntity } from './storage/entities';
+import { Process, Note, Person } from '../domain';
+import { ProcessEntity, NoteEntity, PersonEntity } from './storage/entities';
 
-export class BoardFactory {
+export class ProcessFactory {
 
     constructor(
-        private board: BoardEntity,
+        private process: ProcessEntity,
         private localNotes: NoteEntity[]
     ) {
         this.localNotes = localNotes || [];
     }
 
-    build(): Board {
+    build(): Process {
         const user: Person = this.user();
         const people: Person[] = this.people();
-        const boardNotes: Note[] = this.notes(this.board.notes, people);
+        const processNotes: Note[] = this.notes(this.process.notes, people);
         const localNotes: Note[] = this.notes(this.localNotes, people);
-        const notes = boardNotes.concat(localNotes);
-        return Board.build(this.board.id, notes, people, user);
+        const notes = processNotes.concat(localNotes);
+        return Process.build(this.process.id, notes, people, user);
     }
 
     private user(): Person {
-        const user: PersonEntity = this.board.user;
+        const user: PersonEntity = this.process.user;
         return Person.build(user.id, user.name, user.surname, user.thumbUrl);
     }
 
@@ -29,7 +29,7 @@ export class BoardFactory {
     }
 
     private people(): Person[] {
-        return this.board.people.map(p => {
+        return this.process.people.map(p => {
             return Person.build(p.id, p.name, p.surname, p.thumbUrl);
         })
     }

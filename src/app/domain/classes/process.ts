@@ -3,7 +3,7 @@ import { Note } from './note';
 import { Person } from './person';
 import { listOf, notEmpty, ofClass, validate } from '../validation';
 
-export class Board {
+export class Process {
 
     private constructor(
         private id: string,
@@ -19,7 +19,7 @@ export class Board {
         @listOf(Person.name) people: Person[],
         @ofClass(Person.name) user: Person
     ) {
-        return new Board(id, notes, people, user);
+        return new Process(id, notes, people, user);
     }
 
     @validate

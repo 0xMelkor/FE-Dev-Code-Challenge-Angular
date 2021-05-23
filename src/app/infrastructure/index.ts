@@ -1,3 +1,3 @@
-export * from './board/board.repository.service';
-export * from './board/board.repository';
+export * from './process.repository.service';
+export * from './process.repository';
 
