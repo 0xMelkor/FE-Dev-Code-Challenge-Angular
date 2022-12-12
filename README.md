@@ -1,6 +1,8 @@
 # Advanced Notes
 This project has been developed with Domain Driven Design (DDD) principles in mind. This lead to an architectural structure with proven separation of concerns and high scalability and maintanability capabilities. 
 
+A running build of this project can be found in [codesandbox](https://codesandbox.io/s/9tomc?file=/index.html).
+
 ![image info](./docs/architecture.png)
 
 The project is then structured into 4 different layers:
