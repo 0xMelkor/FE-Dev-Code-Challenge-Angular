@@ -5,7 +5,7 @@ A running build of this project can be found in [codesandbox](https://codesandbo
 
 ![image info](./docs/architecture.png)
 
-The project is then structured into 4 different layers:
+According to DDD the project is structured into 4 different layers:
 
 * **Domain:** It is the main sphere of knowledge or activity we are trying to model in the context of our application. Contains representation of business entities and rules that are deeply connected to the company internal processes and the organization itself. These concepts are not likely to change (ideally they never do).
 
